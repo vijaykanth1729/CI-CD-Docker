@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Welcome To Students DataBase!
+     <a href="{% url 'student_app:create' %}">
+       <button class="btn btn-danger ml-5">CreateStudent</button>
+     </a>
+     <a href="{% url 'boards:board-home' %}">
+       <button class="btn btn-primary ml-3">Check Our Boards</button>
+     </a>
+   </h1>
+  {% for student in my_students %}
+    <p class="lead">StudentName: {{ student.name }}</p>
+    <p>Addresses: {{ student.address }}</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'student_app:detail' student.pk %}" role="button">Learn more</a>
+    <a class="btn btn-info btn-lg ml-3" href="{% url 'student_app:update' student.pk %}" role="button">Update</a>
+    <hr class="my-4">
+    <p></p>
+  {% endfor %}
+</div>
+{% endblock %}
